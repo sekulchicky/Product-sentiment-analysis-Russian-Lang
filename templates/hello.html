@@ -1,12 +1,24 @@
 <!doctype html>
 <title>Sentiment Demo</title>
-<form action="{{ url_for('index_page') }}" method=post>
-    <dl>
-        <dt>Введите/вставьте пример отзыва на банк: <br>
-        <dd><textarea name=text rows=5 cols=40>{{ text }}</textarea>
-        <dd><input type=submit value="Оценить">
-    </dl>
-</form>
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="{{ url_for('static', filename = 'cover.css')}}" rel="stylesheet"></head>
+<body class="text-center"><br><br><br><br><br><br><br>
+    <main role="main" class="inner-cover">
+        <h1 class="cover-heading">Product sentiment analysis (Russian)</h1>
+        <p class="lead">Напишите какой-нибудь отзыв о продукте. Модель попробует оценить его тональность</p>
+		<form action="{{ url_for('index_page') }}" method=post>
+    	<dl>
+        	<dt><br>
+        	<dd><textarea name=text rows=5 cols=70>{{ text }}</textarea>
+        	<dd><input type="submit" class="btn btn-lg btn-secondary" value="Оценить">
+    	</dl>
+		</form>
+		<br>Sentiment prediction:<br>
+		{{ prediction_message }}        
+    </main>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 
-<br>Sentiment prediction:<br>
-{{ prediction_message }}
+
