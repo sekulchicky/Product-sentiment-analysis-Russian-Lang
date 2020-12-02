@@ -1,4 +1,4 @@
-# Product-sentiment-analysis-Russian-Lang
+# Simple product-sentiment-analysis-Russian-Lang
 
 ## Description
 Русско-язычная модель сентимент анализа отзывов на товары.
