@@ -3,13 +3,14 @@ from sentiment_classifier import SentimentClassifier
 from codecs import open
 import time
 from flask import Flask, render_template, request
-app = Flask(__name__, template_folder= "templates")
+app = Flask(__name__, template_folder="templates")
 
 print ("Preparing classifier")
 start_time = time.time()
 classifier = SentimentClassifier()
 print("Classifier is ready")
 print(time.time() - start_time, "seconds")
+
 
 @app.route("/sentiment", methods=["POST", "GET"])
 def index_page(text="", prediction_message=""):
@@ -21,8 +22,8 @@ def index_page(text="", prediction_message=""):
 		print(text, file=logfile)
 		prediction_message = classifier.get_prediction_message(text)
 		print(prediction_message)
-		print(prediction_message, file= logfile)
-		print("</response>", file= logfile)
+		print(prediction_message, file=logfile)
+		print("</response>", file=logfile)
 		logfile.close()
 	
 	return render_template('hello.html', text=text, prediction_message=prediction_message)

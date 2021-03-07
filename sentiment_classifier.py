@@ -1,6 +1,8 @@
 __author__ = 'xead'
+
 import joblib
 from sklearn.linear_model import LogisticRegressionCV
+
 
 class SentimentClassifier(object):
     def __init__(self):
@@ -22,25 +24,18 @@ class SentimentClassifier(object):
     def predict_text(self, text):
         try:
             vectorized = self.vectorizer.transform([text])
-            print(vectorized)
-
         except:
-            print("prediction error")
             return -1, 0.8
-        predict =  self.model.predict(vectorized)[0]
+        predict = self.model.predict(vectorized)[0]
         proba = self.model.predict_proba(vectorized).max()
-        print('predict - {0}; proba - {1}'.format(predict, proba))
-        print(type(predict),type(proba))
         return predict, proba
-
 
     def predict_list(self, list_of_texts):
         try:
             vectorized = self.vectorizer.transform(list_of_texts)
-            return self.model.predict(vectorized),\
+            return self.model.predict(vectorized), \
                    self.model.predict_proba(vectorized)
         except:
-            print('prediction error')
             return None
 
     def get_prediction_message(self, text):
